@@ -13,10 +13,6 @@ AWS EMR Deployment video link: https://youtu.be/cLWhmFdm3WI
 
 * * * * *
 
-Docker Deployment video link:
-
-* * * * *
-
 Running the project
 -------------------
 
