@@ -113,12 +113,13 @@ Used to invoke the LLM
 Used to send the data through and through to the lambda in grpc+proto format
 
 ### 5\. Data Flow
-![image](https://github.com/user-attachments/assets/7beb7d33-61c3-4c77-82ff-6f76052082f4)
+![image](https://github.com/user-attachments/assets/2f6faf43-ad42-4b0a-b13e-06e29077a6e2)
+
 
 
 ### Test Cases:
+![image](https://github.com/user-attachments/assets/14bccb78-6db0-4a97-857f-8dcfb435f072)
 
-![Test_cases_CS441](https://github.com/user-attachments/assets/6a53814d-6862-495d-b526-2ff1a524c4ab)
 
 ### Project Dependencies:
 - Java 8
