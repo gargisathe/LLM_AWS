@@ -1,5 +1,3 @@
-PLEASE SEE CONVOAGENT BRANCH
-
 * * * * *
 
 **CS441_GargiSathe_HW3**\
