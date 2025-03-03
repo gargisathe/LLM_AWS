@@ -1,0 +1,73 @@
+#version: '3.8'
+#
+#services:
+#  microservice:
+#    build: .
+#    ports:
+#      - "8080:8080"
+#    environment:
+#      - CONFIG_PATH=/app/conf/application.conf
+#    volumes:
+#      - ./conf:/app/conf
+#    networks:
+#      - app-network
+#    depends_on:
+#      - ollama
+#
+#  ollama:
+#    image: ollama/ollama:latest
+#    ports:
+#      - "11434:11434"
+#    networks:
+#      - app-network
+#
+#networks:
+#  app-network:
+#    driver: bridge
+
+#
+## Use OpenJDK 8 with Alpine as base image
+#FROM openjdk:8-jdk-alpine
+#
+#  # Install dependencies including bash, curl, and zip
+#RUN apk add --no-cache bash curl zip
+#
+#  # Install SDKMAN to manage Scala and sbt versions
+#RUN curl -s https://get.sdkman.io | bash && \
+#source $HOME/.sdkman/bin/sdkman-init.sh && \
+#sdk install sbt 1.5.5
+#
+#  # Set environment variables for SDKMAN and sbt
+#ENV PATH="${HOME}/.sdkman/candidates/sbt/current/bin:${PATH}"
+#
+#  # Set working directory in the container
+#WORKDIR /app
+#
+#  # Copy the current directory contents into the container at /app
+#COPY . /app
+#
+#  # Optional: Run sbt commands (such as build or start the app) as needed
+#CMD ["sbt", "run"]
+
+
+version: '3.8'
+
+services:
+  microservice:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"  # Exposing port for the microservice
+    environment:
+      - SBT_VERSION=1.5.5  # SBT version for the build process
+      - MICRO_SERVICE_HOST=0.0.0.0  # Optional: Specify the host to listen on
+    volumes:
+      - .:/app  # Mounting the current directory to /app in the container
+    command: bash -c "source /root/.sdkman/bin/sdkman-init.sh && sbt run"  # Ensure SDKMAN is sourced before running sbt
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge
